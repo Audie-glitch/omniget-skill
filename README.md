@@ -8,7 +8,7 @@ Upstream app: [tonhowtf/omniget](https://github.com/tonhowtf/omniget)
 
 1. Ensure `omniget` / `omniget-cli` is available  
 2. `omniget info <url>` (optionally `--json`)  
-3. `omniget download` / `batch` / `import-cookies` as needed (skill covers Netscape cookie export / extension pairing)  
+3. `omniget download` / `batch` / `import-cookies` as needed (skill covers Netscape cookie export / extension pairing; OmniGet already bundles yt-dlp)  
 4. Report paths and errors  
 
 Legal: only content the user’s session can already open — no DRM/paywall bypass.

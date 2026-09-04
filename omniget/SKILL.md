@@ -12,7 +12,7 @@ Skill package: https://github.com/Audie-glitch/omniget-skill
 
 ## Goal
 
-Given one or more URLs, get files onto disk (or report why not). Prefer CLI automation over telling the user to click the GUI.
+Given one or more URLs, get files onto disk (or report why not). Prefer OmniGet CLI automation over raw yt-dlp or “click the GUI yourself” — OmniGet wraps yt-dlp plus native extractors, queue, and cookies.
 
 ## Preconditions
 
@@ -94,17 +94,9 @@ omniget import-cookies cookies.txt -n udemy
 
 5. Re-run `omniget info` / `download` on the URL.
 
-### Alternate: yt-dlp browser cookies (if omniget path fails)
+### Note on yt-dlp
 
-If the user already trusts yt-dlp on their machine:
-
-```bash
-yt-dlp --cookies-from-browser chrome --cookies cookies.txt "<url>"
-# then:
-omniget import-cookies cookies.txt
-```
-
-Only on **their** profile, with their consent. Do not copy cookie DBs off shared/CI machines.
+OmniGet **already bundles and self-updates yt-dlp** (SHA-256 verified) and uses it for generic sites. Prefer OmniGet’s GUI pairing + `import-cookies` — do **not** tell the user to install or run a separate yt-dlp just for cookies unless OmniGet itself is unavailable.
 
 ### Agent checklist
 
