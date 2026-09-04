@@ -59,7 +59,7 @@ omniget batch links.txt -m 3 -o ~/Downloads/omniget
 
 ### 4) Auth / cookies (owned content only)
 
-Netscape `cookies.txt` from the user’s browser session:
+After you have a Netscape file (see **How to get cookies** below):
 
 ```bash
 omniget import-cookies cookies.txt
@@ -68,6 +68,50 @@ omniget import-cookies cookies.txt -n my-account
 ```
 
 Never invent credentials. Never coach DRM cracks.
+
+## How to get cookies (user’s own session)
+
+Need a **Netscape `cookies.txt`** for `import-cookies`. Only export cookies from an account the user controls. Never pull someone else’s session or scrape login pages for passwords.
+
+### Preferred: OmniGet browser extension
+
+1. Install OmniGet desktop app + its **Chrome/Firefox extension** (from the app’s plugins / pairing UI).
+2. Log into the site in that browser (Udemy, etc.).
+3. Use the extension’s one-click handoff / cookie pairing so the app stores cookies locally.
+4. CLI can then use the shared cookie store, or export/import as Netscape if the UI offers it.
+
+### Manual Netscape export (works with CLI)
+
+1. In Chrome/Firefox, install a reputable **cookies.txt export** extension that writes Netscape format (e.g. “Get cookies.txt LOCALLY” or similar — prefer ones that keep data on-device).
+2. Open the site while logged in.
+3. Export cookies for that site/domain to `cookies.txt`.
+4. Import:
+
+```bash
+omniget import-cookies cookies.txt --dry-run   # preview
+omniget import-cookies cookies.txt -n udemy
+```
+
+5. Re-run `omniget info` / `download` on the URL.
+
+### Alternate: yt-dlp browser cookies (if omniget path fails)
+
+If the user already trusts yt-dlp on their machine:
+
+```bash
+yt-dlp --cookies-from-browser chrome --cookies cookies.txt "<url>"
+# then:
+omniget import-cookies cookies.txt
+```
+
+Only on **their** profile, with their consent. Do not copy cookie DBs off shared/CI machines.
+
+### Agent checklist
+
+- Ask the user to export (or use OmniGet pairing) — don’t silently read browser profiles unless they explicitly ask and it’s their machine.
+- Keep `cookies.txt` out of git; treat as secret.
+- If downloads still 401/403 after import: cookies expired → re-login → re-export.
+
 
 ## Decision rules
 
