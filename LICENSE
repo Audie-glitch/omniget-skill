@@ -1,0 +1,11 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+This repository packages agent guidance derived from the OmniGet project
+(https://github.com/tonhowtf/omniget), which is licensed under GPL-3.0.
+
+The full GPL-3.0 text is available at:
+https://www.gnu.org/licenses/gpl-3.0.en.html
+
+Copyright (C) OmniGet contributors for upstream material.
+Copyright (C) Audie-glitch for packaging as an agent skill (2026).
